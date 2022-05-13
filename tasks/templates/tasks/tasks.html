@@ -7,10 +7,15 @@
     <title>Tasks</title>
 </head>
 <body>
+    <form method="POST" action="/">
+        {% csrf_token %}
+        {{ form.title }}
+        <input type="submit" name="Create Task">
+    </form>
+    
     <ul>
         {% for task in tasks %}
             <li>{{ task.title }}</li>
-            <p>{{ task.task }}</p>
         {% endfor %}
     </ul>
 </body>
