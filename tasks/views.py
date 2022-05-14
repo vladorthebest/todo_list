@@ -1,3 +1,4 @@
+from pickle import TRUE
 from django.shortcuts import render, redirect
 
 from tasks.models import *
@@ -5,6 +6,7 @@ from tasks.forms import *
 
 def tasks(request):
     tasks = Task.objects.all()
+    
     form = TaskForm()
 
     if request.method == 'POST':
@@ -30,3 +32,13 @@ def update_task(request, pk):
 
     context = {'task': task, 'form': form}
     return render(request, 'tasks/update_task.html', context)
+
+def delete_task(request, pk):
+    task = Task.objects.get(id=pk)
+
+    if request.method == 'POST':
+        task.delete()
+        return redirect('/')
+
+    context = {'task': task}
+    return render(request, 'tasks/delete.html', context)
