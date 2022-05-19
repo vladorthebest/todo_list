@@ -1,11 +1,20 @@
-from pickle import TRUE
 from django.shortcuts import render, redirect
+from django.contrib.auth.views import LoginView
 
 from tasks.models import *
 from tasks.forms import *
 
+
+class CustomLoginView(LoginView):
+    template_name = 'tasks/login.html'
+    fields = '__all__'
+    redirect_authenticated_user = True
+
+    def get_success_url(self):
+        return '/'
+
 def tasks(request):
-    tasks = Task.objects.all()
+    tasks = Task.objects.all()[::-1]
     
     form = TaskForm()
 
