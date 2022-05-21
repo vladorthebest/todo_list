@@ -1,0 +1,38 @@
+{% extends "tasks/base.html" %}
+
+{% block content %}
+        {% if request.user.is_authenticated %}
+            <p>{{ request.user }}</p>
+            <a href="logout/">Logout</a>
+        {% else %}
+            <a href="login/">Login</a>
+        {% endif %}
+
+        <hr>
+        <a href="{% url 'create task' %}">Add Task</a>
+        
+        <h4>Count Tasks - {{ count }}</h4>
+
+        <form method="GET" action="">
+            <input type="text" name="search-area" value="{{ search_input }}">
+            <input type="submit" value="Search">
+        </form>
+
+        {% for task in tasks %}
+            
+                <div class="item-row">
+                    <a href="{% url 'detail task' task.id %}">Detail</a>
+                    <a href="{% url 'update task' task.id %}">Update</a>
+                    <a href="{% url 'delete task' task.id %}">Delete</a>
+
+                    {% if task.status == True %}
+                        <span style="margin: 20px"><strike >{{ task.title }}</strike></span>
+                    {% else %}
+                        <span style="margin: 20px">{{ task.title }}</span>
+                    {% endif %}
+                </div>
+            
+        {% endfor %}
+{% endblock %}            
+
+

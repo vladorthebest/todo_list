@@ -1,0 +1,12 @@
+{% extends "tasks/base.html" %}
+
+{% block content  %}
+    <h3>{{ task.title }}</h3>
+            
+    <h2>{{ task.description }}</h2>
+
+    <hr>
+    
+    <a href="{% url 'list tasks' %}">Cancel</a>
+        
+{% endblock %}

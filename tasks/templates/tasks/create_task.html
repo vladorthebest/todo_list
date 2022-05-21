@@ -1,13 +1,12 @@
 {% extends "tasks/base.html" %}
 
 {% block content  %}
-    <h3>{{ task.title }}</h3>
-            
+    <h2>Add Task</h2>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" name="Confirm" class="btn btn-sm btn-info" style="width: 100px;">
     </form>
-    <a href="{% url 'list tasks' %}"  class="btn btn-sm btn-danger" style="width: 100px;">Cancel</a>
+    <a href="{% url 'list tasks' %}"  class="btn btn-sm btn-danger" style="width: 100px;">Go Back</a>
         
 {% endblock %}

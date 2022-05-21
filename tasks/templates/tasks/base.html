@@ -5,21 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Task</title>
+    <title>Todo List</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
 </head>
-<body>
-    <div class="center-column">
-        <div class="todo-list">
-            <p>You are sure you want delete "{{ task.title }}"?</p>
-            <a href="{% url 'list tasks' %}" class="btn btn-sm btn-info" style="width: 100px;">Cancel</a>
-            <form method="POST">
-                {% csrf_token %}
-                <input type="submit" name="Confirm" class="btn btn-sm btn-danger" style="width: 100px;">
-            </form>
-        </div>
-    </div>  
-</body>
+    <body>
+        <div class="center-column">
+            <div class="todo-list">
+                {% block content %}
+
+                {% endblock %}
+            </div>
+        </div>  
+    </body>
 </html>
