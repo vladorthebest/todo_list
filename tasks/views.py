@@ -104,3 +104,10 @@ class RegisterPage(FormView):
             #if user authenticated - redirect on main page
             return redirect('/') 
         return super(RegisterPage, self).get(*args, **kwargs)
+
+
+def tasktrue(request, pk):
+    task = Task.objects.get(id=pk)
+    task.status = not task.status
+    task.save()
+    return redirect('/')
