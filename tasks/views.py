@@ -67,7 +67,7 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
     success_url = reverse_lazy('list tasks') #return user on "list tasks" page when he updated task
-    template_name = 'tasks/update_task.html'
+    template_name = 'tasks/create_task.html'
     fields = ['title', 'description', 'status'] #update form have only these fields
 
 class TaskDelete(LoginRequiredMixin, DeleteView):

@@ -1,10 +1,18 @@
 {% extends "tasks/base.html" %}
 
 {% block content %}
-    <p>You are sure you want delete "{{ task.title }}"?</p>
-    <a href="{% url 'list tasks' %}" class="btn btn-sm btn-info" style="width: 100px;">Cancel</a>
-    <form method="POST">
-        {% csrf_token %}
-        <input type="submit" name="Confirm" class="btn btn-sm btn-danger" style="width: 100px;">
-    </form>
+
+    <div class="header-bar">
+        <a href="{% url 'list tasks' %}">&#8592; Back</a>
+    </div>
+
+    
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            <p>You are sure you want delete "{{ task.title }}"?</p>
+            <input type="submit" name="Confirm" class="button">
+        </form>
+    </div>
+    
 {% endblock %}
