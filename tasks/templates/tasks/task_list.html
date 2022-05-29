@@ -30,13 +30,13 @@
                 <div class="task-wrapper">
                     {% if task.status %}
                         <div class="task-title">
-                            <a href="{% url 'complete task' task.id %}"><div class="task-complete-icon"></div></a>
+                            <a href="{% url 'convert task' task.id %}"><div class="task-complete-icon"></div></a>
                             <i><s><a href="{% url 'update task' task.id %}">{{ task }}</a></s></i>
                         </div>
                         <a class="delete-link" href="{% url 'delete task' task.id %}">&#215;</a>
                     {% else %}
                         <div class="task-title">
-                            <a href="{% url 'complete task' task.id %}"><div class="task-incomplete-icon"></div></a>
+                            <a href="{% url 'convert task' task.id %}"><div class="task-incomplete-icon"></div></a>
                             <a href="{% url 'update task' task.id %}">{{ task }}</a>    
                         </div>
                         <a class="delete-link" href="{% url 'delete task' task.id %}">&#215;</a>

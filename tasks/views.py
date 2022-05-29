@@ -106,7 +106,9 @@ class RegisterPage(FormView):
         return super(RegisterPage, self).get(*args, **kwargs)
 
 
-def tasktrue(request, pk):
+def convert_task(request, pk):
+    """ Function to convert task status """
+    
     task = Task.objects.get(id=pk)
     task.status = not task.status
     task.save()
